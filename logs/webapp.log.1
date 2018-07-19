@@ -1,117 +1,100 @@
-2018-07-10 12:36:07,115 ERROR: Exception on /login [GET] [in c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py:1560]
+2018-07-12 14:25:45,842 ERROR: Exception on / [GET] [in c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
     raise value
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Charly\python\WebApp Template\webapp\routes.py", line 73, in login
-    return render_template('login.html', title='Ingreso', form=frm_lgin)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
-    {% block navbar %}
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\base.html", line 26, in block "navbar"
-    <li><a href="{{ url_for('config', token='main') }}">Configuración</a></li>
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'config' with values ['token']. Did you mean 'login' instead?
-2018-07-10 12:36:12,280 ERROR: Exception on /favicon.ico [GET] [in c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1590, in dispatch_request
-    self.raise_routing_exception(req)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1573, in raise_routing_exception
-    raise request.routing_exception
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\ctx.py", line 294, in match_request
-    self.url_adapter.match(return_rule=True)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\werkzeug\routing.py", line 1581, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1512, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1471, in handle_http_exception
-    return handler(e)
-  File "C:\Users\Charly\python\WebApp Template\webapp\errors.py", line 7, in not_found_error
-    return render_template('404.html'), 404
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
-    {% block navbar %}
-  File "C:\Users\Charly\python\WebApp Template\webapp\templates\base.html", line 26, in block "navbar"
-    <li><a href="{{ url_for('config', token='main') }}">Configuración</a></li>
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\users\charly\python\webapp template\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'config' with values ['token']. Did you mean 'login' instead?
+  File "c:\users\charly\python\cfdisweb\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Charly\python\CFDIsWeb\webapp\routes.py", line 67, in index
+    facts.append((line.RFC, line.serie, line.folio, time.strftime("%d-%b-%Y", line.fecha),
+TypeError: Tuple or struct_time argument required
+2018-07-12 14:30:16,752 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:30:43,310 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:32:16,148 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:32:52,710 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:33:53,747 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:38:26,635 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:41:29,253 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:42:01,408 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-12 14:44:02,701 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-13 18:11:10,922 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-13 18:14:25,450 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-13 18:14:26,743 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:27:53,756 INFO: Email Robot iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:28:48,106 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:35:11,722 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:35:12,888 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:37:15,366 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:37:16,449 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:46:44,035 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:46:45,114 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:49:13,843 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:49:14,948 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:50:02,517 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:50:03,606 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:59:12,566 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 11:59:13,599 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:12:32,317 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:12:33,417 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:14:01,239 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:14:02,328 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:14:41,863 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:23:21,487 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:23:22,597 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:24:21,008 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:24:22,096 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:28:31,374 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:28:32,508 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:35:49,346 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:35:50,456 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:36:14,425 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 12:36:15,510 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 17:12:29,517 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-18 18:00:33,402 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:12:18,662 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:16:08,447 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:16:35,704 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:17:20,035 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:17:21,674 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:40:58,412 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:42:17,381 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:45:11,620 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:51:21,232 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:52:28,709 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 11:57:55,358 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:34:05,393 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:34:18,018 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:34:19,193 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:37:10,420 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:39:12,970 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:44:19,422 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:48:21,145 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:50:11,210 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 12:52:02,656 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:04:13,670 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:20:00,487 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:20:14,773 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:20:16,043 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:21:19,710 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:25:54,138 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:26:55,344 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:28:39,991 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:29:22,197 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:30:12,449 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:30:55,695 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:32:23,396 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:32:24,614 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:33:39,323 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:33:40,491 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:34:58,909 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:35:01,537 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]
+2018-07-19 13:35:02,787 INFO: CFDIWeb iniciado [in C:\Users\Charly\python\CFDIsWeb\webapp\__init__.py:35]

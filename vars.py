@@ -1,0 +1,16 @@
+DB_URL = '129.150.86.242'
+DB_PORT = '1521'
+DB_SERVICE = 'apx01.a515283.oraclecloud.internal'
+DB_USER = 'MLROBOT'
+DB_PASS = 'mlrobot01'
+
+IMAP_USER = 'deepcri77@gmail.com'
+IMAP_PASS = '77ircpeed'
+IMAP_SRV = 'imap.gmail.com'
+IMAP_PORT = '993'
+
+SMTP_USER = 'deepcri77@gmail.com'
+SMTP_PASS = '77ircpeed'
+SMTP_SRV = 'smtp.gmail.com'
+SMTP_PORT = '587'
+SMTP_SSL = 'False'

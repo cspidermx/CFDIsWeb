@@ -7,14 +7,16 @@ from config import VarConfig
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+import locale
 
 
 app = Flask(__name__)
 app.config.from_object(VarConfig)
 wappdb = SQLAlchemy(app)
 login = LoginManager(app)
-login.login_view = 'login'
 bootstrap = Bootstrap(app)
+locale.setlocale(locale.LC_ALL, 'Spanish_Mexico.1252')
+login.login_view = 'login'
 auth = (app.config['SMTP']['user'], app.config['SMTP']['password'])
 mail_handler = SMTPHandler(
             mailhost=(app.config['SMTP']['server'], app.config['SMTP']['port']),
@@ -30,7 +32,7 @@ file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(messag
 file_handler.setLevel(logging.INFO)
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.INFO)
-app.logger.info('Email Robot iniciado')
+app.logger.info('CFDIWeb iniciado')
 
 
-from webapp import routes, models, errors
+from webapp import routes, models, CFDImodels, errors

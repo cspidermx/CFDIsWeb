@@ -1,5 +1,17 @@
 {% extends 'bootstrap/base.html' %}
 
+{% block styles %}
+{{super()}}
+    <!-- jQueryui Style -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <!-- DataTables Style -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <!-- yadcf Style -->
+    <link href="{{ url_for('static', filename='yadcf/jquery.datatables.yadcf.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Buttons Style -->
+    <link href="{{ url_for('static', filename='buttons/css/buttons.dataTables.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block title %}
     {% if title %}
         {{ title }} - WebApp
@@ -23,6 +35,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                    <li><a href="{{ url_for('aerolineas') }}">Aerolíneas</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -52,3 +65,33 @@
     {% block app_content %}{% endblock %}
     </div>
 {% endblock %}
+
+{% block scripts %}
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQueryui library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='datepicker-es.js') }}"></script>
+    <script>
+        $.datepicker.setDefaults(
+          $.extend(
+            {'dateFormat':'dd/mm/yy'},
+            $.datepicker.regional['es']
+          )
+        );
+    </script>
+    <!-- DataTables Script -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
+    <!-- DataTables Extensions Script -->
+        <!-- Ultimate date / time sorting Scripts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
+        <!-- yadcf Scripts -->
+        <script src="{{ url_for('static', filename='yadcf/jquery.dataTables.yadcf.js') }}"></script>
+        <!-- Buttons Scripts -->
+        <script src="{{ url_for('static', filename='buttons/js/dataTables.buttons.js') }}"></script>
+        <script src="{{ url_for('static', filename='buttons/js/buttons.html5.js') }}"></script>
+        <script src="{{ url_for('static', filename='buttons/js/buttons.flash.js') }}"></script>
+{% endblock scripts %}

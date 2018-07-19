@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WebApp Template.iml" filepath="$PROJECT_DIR$/.idea/WebApp Template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CFDIsWeb.iml" filepath="$PROJECT_DIR$/.idea/CFDIsWeb.iml" />
     </modules>
   </component>
 </project>

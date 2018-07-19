@@ -2,8 +2,8 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>Bienvenido, {{ current_user.username }}!</h1><BR>
-    <div class="row" style="margin: 0 auto; width:70%;">
+    <h1>Facturas con complemento de Aerolíneas</h1><BR>
+    <div class="row" style="margin: 0 auto;">
         <table id="table_id" class="display compact">
             <thead>
                 <tr>
@@ -47,13 +47,13 @@
                 },
                 columnDefs: [
                     {
-                        targets: [ -1, -2],
-                        className: 'dt-body-right dt-head-center'
+                        targets: [ {{ alg }} ],
+                        className: 'dt-body-right dt-head-center',
                     },
                     {
-                        targets: -3,
-                        className: 'dt-body-center dt-head-center'
-                    }
+                        targets: [ 3 ],
+                        className: 'dt-body-center dt-head-center',
+                    },
                   ],
                 responsive: true,
                 dom: '<"panel panel-info"<".panel-heading"l<".label"B>f><".panel-body"rt<".panel-footer"ip>>>',

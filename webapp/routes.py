@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for
-from webapp import app
+from webapp import app, wappdb
 from webapp.forms import LoginForm
 from flask_login import current_user, login_user
 from webapp.models import User
@@ -8,10 +8,14 @@ from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from webapp import wappdb
-from webapp.forms import RegistrationForm, EditProfileForm, ResetPasswordRequestForm, ResetPasswordForm, StartStop
+from webapp.forms import RegistrationForm, EditProfileForm, ResetPasswordRequestForm, ResetPasswordForm
 from email.message import EmailMessage
+from webapp.CFDImodels import CFDI, Receptor
 import threading
 import smtplib
+import locale
+from datetime import datetime
+from webapp.dbtools import cfdiscompl
 
 
 def send_async_email(app_, srv, msge):
@@ -51,8 +55,43 @@ def send_password_reset_email(usr):
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    frmss = StartStop()
-    return render_template('index.html', title='Inicio', serv=True, form=frmss)
+    cols = ['Receptor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
+    # c = CFDI.query.filter_by().first()
+    # .add_columns().filter(friendships.user_id == userID).paginate(page, 1, False)
+    c = CFDI.query.join(Receptor, CFDI.uuid == Receptor.uuid).add_columns(CFDI.serie, CFDI.subtotal,
+                                                                          CFDI.folio, CFDI.fecha, CFDI.total,
+                                                                          Receptor.RFC, Receptor.nombre).all()
+    # c = CFDI.query.all()
+    facts = list()
+    for line in c:
+        facts.append([line.RFC, line.serie, line.folio, datetime.strftime(line.fecha, "%d/%m/%Y"),
+                      locale.currency(line.subtotal, grouping=True), locale.currency(line.total, grouping=True)])
+    #  '$' + '{:20,.2f}'.format(line.total)
+    return render_template('index.html', title='Inicio', columnas=cols, facturas=facts)
+
+
+@app.route('/aerolineas', methods=['GET', 'POST'])
+@login_required
+def aerolineas():
+    cfdiscompl('Aerolineas')
+    # cols = ['Receptor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
+    c, cols = cfdiscompl('Aerolineas')
+    print(c)
+    facts = list()
+    for line in c:
+        facts.append([line[0], line[1], line[2], datetime.strftime(line[3], "%d/%m/%Y"),
+                      locale.currency(line[4], grouping=True), locale.currency(line[5], grouping=True),
+                      locale.currency(line[6], grouping=True), locale.currency(line[7], grouping=True)
+                      ])
+        for i in range(8, len(line)):
+            facts[len(facts) - 1].append(locale.currency(line[i], grouping=True))
+    rightalg = ''
+    for i in range(4, len(line)):
+        rightalg = rightalg + str(i) + ', '
+    rightalg = rightalg[:-2]
+    #  '$' + '{:20,.2f}'.format(line.total)
+    print(facts)
+    return render_template('tua.html', title='Inicio', columnas=cols, facturas=facts, alg=rightalg)
 
 
 @app.route('/login', methods=['GET', 'POST'])
