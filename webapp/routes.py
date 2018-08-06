@@ -76,7 +76,6 @@ def aerolineas():
     cfdiscompl('Aerolineas')
     # cols = ['Receptor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
     c, cols = cfdiscompl('Aerolineas')
-    print(c)
     facts = list()
     for line in c:
         facts.append([line[0], line[1], line[2], datetime.strftime(line[3], "%d/%m/%Y"),
@@ -86,11 +85,10 @@ def aerolineas():
         for i in range(8, len(line)):
             facts[len(facts) - 1].append(locale.currency(line[i], grouping=True))
     rightalg = ''
-    for i in range(4, len(line)):
+    for i in range(4, len(facts)):
         rightalg = rightalg + str(i) + ', '
     rightalg = rightalg[:-2]
     #  '$' + '{:20,.2f}'.format(line.total)
-    print(facts)
     return render_template('tua.html', title='Inicio', columnas=cols, facturas=facts, alg=rightalg)
 
 
