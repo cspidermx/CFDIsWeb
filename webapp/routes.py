@@ -10,7 +10,7 @@ from werkzeug.urls import url_parse
 from webapp import wappdb
 from webapp.forms import RegistrationForm, EditProfileForm, ResetPasswordRequestForm, ResetPasswordForm
 from email.message import EmailMessage
-from webapp.CFDImodels import CFDI, Receptor
+from webapp.CFDImodels import CFDI, Emisor, Articulo69, Receptor
 import threading
 import smtplib
 import locale
@@ -51,21 +51,31 @@ def send_password_reset_email(usr):
     send_email(smtpserver, msg)
 
 
+def snart69b(rfcfdi):
+    a69 = 'No'
+    art69 = Articulo69.query.filter_by(rfc=rfcfdi, situacion='Definitivo').all()
+    if len(art69) != 0:
+        a69 = 'Sí'
+    return a69
+
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    cols = ['Receptor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
+    cols = ['Emisor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total', 'Art.69b']
     # c = CFDI.query.filter_by().first()
     # .add_columns().filter(friendships.user_id == userID).paginate(page, 1, False)
-    c = CFDI.query.join(Receptor, CFDI.uuid == Receptor.uuid).add_columns(CFDI.serie, CFDI.subtotal,
-                                                                          CFDI.folio, CFDI.fecha, CFDI.total,
-                                                                          Receptor.RFC, Receptor.nombre).all()
+    c = CFDI.query.join(Emisor, CFDI.uuid == Emisor.uuid).add_columns(CFDI.serie, CFDI.subtotal,
+                                                                      CFDI.folio, CFDI.fecha, CFDI.total,
+                                                                      Emisor.RFC, Emisor.nombre).all()
     # c = CFDI.query.all()
     facts = list()
     for line in c:
+
         facts.append([line.RFC, line.serie, line.folio, datetime.strftime(line.fecha, "%d/%m/%Y"),
-                      locale.currency(line.subtotal, grouping=True), locale.currency(line.total, grouping=True)])
+                      locale.currency(line.subtotal, grouping=True), locale.currency(line.total, grouping=True),
+                      snart69b(line.RFC)])
     #  '$' + '{:20,.2f}'.format(line.total)
     return render_template('index.html', title='Inicio', columnas=cols, facturas=facts)
 
@@ -74,8 +84,9 @@ def index():
 @login_required
 def aerolineas():
     cfdiscompl('Aerolineas')
-    # cols = ['Receptor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
+    # cols = ['Emisor', 'Serie', 'Folio', 'Fecha', 'SubTotal', 'Total']
     c, cols = cfdiscompl('Aerolineas')
+    cols.append('Art.69b')
     facts = list()
     for line in c:
         facts.append([line[0], line[1], line[2], datetime.strftime(line[3], "%d/%m/%Y"),
@@ -84,8 +95,9 @@ def aerolineas():
                       ])
         for i in range(8, len(line)):
             facts[len(facts) - 1].append(locale.currency(line[i], grouping=True))
+        facts[len(facts) - 1].append(snart69b(line[0]))
     rightalg = ''
-    for i in range(4, len(facts)):
+    for i in range(4, len(facts[0]) - 1):
         rightalg = rightalg + str(i) + ', '
     rightalg = rightalg[:-2]
     #  '$' + '{:20,.2f}'.format(line.total)
