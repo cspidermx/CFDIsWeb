@@ -102,5 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
 vars.py
-vars.py
+.idea/
