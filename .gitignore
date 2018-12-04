@@ -105,3 +105,4 @@ venv.bak/
 
 vars.py
 .idea/
+.idea/workspace.xml
